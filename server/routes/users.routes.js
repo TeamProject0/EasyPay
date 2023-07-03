@@ -5,8 +5,8 @@ const { getAllUsers, addUser,deleteUser,updateUser } = require("../controllers/u
 
 
 router.get("/getAll",getAllUsers)
-router.get("/add",addUser)
-router.get("/:iduser",deleteUser)
-router.get("/:iduser",updateUser)
+router.post("/add",addUser)
+router.delete("/:idusers",deleteUser)
+router.put("/:idusers",updateUser)
 module.exports = router;
 
