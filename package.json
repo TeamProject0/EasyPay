@@ -4,21 +4,19 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-<<<<<<< HEAD:server/package.json
-    "server-dev": "nodemon server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-=======
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx nodemon server/index.js"
->>>>>>> 9b0180bcd44468ba31b9af793666e4ae1264de87:package.json
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "cloudinary": "^1.37.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.22"
   }
