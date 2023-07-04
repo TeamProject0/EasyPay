@@ -1,7 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  const [user,setUser]=useState({
+    name: '',
+      lastname: '',
+      username:'',
+      email: '',
+      password: '',
+      country:'',
+      cover:null
+
+  })
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    console.log(user);
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    const form = new FormData();
+    form.append('file', file);
+    form.append('upload_preset', 'paypalscard');
+  
+    try {
+      const response = await axios.post(
+        'https://api.cloudinary.com/v1_1/dgcdmrj7x/image/upload',
+        form,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': process.env.CLOUD_KEY
+          }
+        }
+      );
+  
+      const imageUrl = response.data.secure_url;
+      setUser((prev) => ({ ...prev, cover: imageUrl }));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:3000/users/add', user);
+      navigate('/login')
+    } catch (err) {
+      console.log(err);
+      console.log(err.response); 
+      console.log(err.message);
+    }
+  }
+
 
 
   return (
@@ -39,9 +95,11 @@ const Signup = () => {
                   <div className="col-md-6 mb-4">
                     <div className="form-outline">
                       <input
+                      onChange={handleChange}
                         type="text"
                         className="form-control"
                         placeholder="Name"
+                        name='name'
                       />
                     </div>
                   </div>
@@ -50,9 +108,12 @@ const Signup = () => {
                   <div className="col-md-6 mb-4">
                     <div className="form-outline">
                       <input
+                      onChange={handleChange}
                         type="text"
                         className="form-control"
                         placeholder="Last Name"
+                        name='lastname'
+
                       />
                     </div>
                   </div>
@@ -61,51 +122,62 @@ const Signup = () => {
                 {/* username input */}
                 <div className="form-outline mb-4">
                   <input
+                    onChange={handleChange}
                     type="text"
                     className="form-control"
                     placeholder="User Name"
+                    name='username'
                   />
                 </div>
                 {/* email input */}
 
                 <div className="form-outline mb-4">
                   <input
+                  onChange={handleChange}
                     type="email"
                     className="form-control"
                     placeholder="Email Adress"
+                    name='email'
                   />
                 </div>
 
                 {/* Password input */}
                 <div className="form-outline mb-4">
                   <input
+                  onChange={handleChange}
                     type="password"
                     className="form-control"
                     placeholder="Password"
+                    name='password'
                   />
                 </div>
                 {/* country input */}
 
                 <div className="form-outline mb-4">
                   <input
+                  onChange={handleChange}
                     type="text"
                     className="form-control"
                     placeholder="Country"
+                    name='country'
                   />
                 </div>
                 {/* cover input */}
 
                 <div className="form-outline mb-4">
                   <input
+                  onChange={handleImageUpload}
                     type="file"
                     className="form-control"
                     placeholder="Cover"
+                    name='cover'
                   />
                 </div>
 
                 {/* Submit button */}
                 <button
-                  type="submit"
+                onClick={handleClick} 
+                  
                   className="btn btn-primary btn-block mb-4"
                 >
                   Sign up
