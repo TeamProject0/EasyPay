@@ -1,36 +1,28 @@
 const conn = require("../index.js")
 
 module.exports = {
-    //a function which fetches all the users.
     getAll: function (callback) {
       const q = 'SELECT * FROM card'
       conn.query(q, function (error, results, fields) {
         callback(error, results);
       });
     },
-      //a function that retrieves one user record based on the provided id.
-      getOne: function(idusers,callback) {
-        const q="SELECT * FROM card WHERE idusers = ?"
-        conn.query(q,idusers,function(err,result){
-          callback(err,result)
-        })
-      },
-      // a function that can be used to add a user to the users table.
+     
       add: function(callback, values) {
-        const q = "INSERT INTO card (name) VALUES (?)";
-        conn.query(q, [values.name], function(err, results, fields) {
+        const q = "INSERT INTO card (cardnumber,cvv,balance,expiry,brand) VALUES (?,?,?,?,?)";
+        conn.query(q, [values.cardnumber,values.cvv,values.balance,values.expiry,values.brand], function(err, results, fields) {
           callback(err, results);
         });
       },
-      delete: function(idusers,callback ) {
-        const q = "DELETE FROM card WHERE idusers = ?";
-        conn.query(q,idusers, function(err, results, fields) {
+      delete: function(idcards,callback ) {
+        const q = "DELETE FROM card WHERE idcard = ?";
+        conn.query(q,idcards, function(err, results, fields) {
           callback(err, results);
         });
       },
-      update: function(idusers,name,callback ) {
-        const q = "UPDATE  card SET name=? WHERE idusers = ?";
-        conn.query(q,[name,idusers], function(err, results, fields) {
+      update: function(idcards,cardnumber,cvv,balance,expiry,brand,callback ) {
+        const q = "UPDATE  card SET cardnumber=?, `cvv`=?, balance=?, expiry=?, brand=? WHERE idcard = ?";
+        conn.query(q,[idcards,cardnumber,cvv,balance,expiry,brand], function(err, results, fields) {
           callback(err, results);
         });
       }
