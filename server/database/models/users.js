@@ -4,7 +4,7 @@ const cloudinary = require("../cloudConfig.js")
 module.exports = {
     getAll: function (callback) {
         const q = 'SELECT * FROM users'
-        conn.query(q, function (error, results, fields) {
+        conn.query(q, function (error, results) {
           callback(error, results);
         });
       },
@@ -16,7 +16,7 @@ module.exports = {
               })
               console.log(uploadResult.secure_url)
             const q = "INSERT INTO users (username, `email`, password, name, lastname, country, cover,) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            conn.query(q,[values.username,values.email,values.password,values.name,values.lastname,values.country,values.cover], function(err, results, fields) {
+            conn.query(q,[values.username,values.email,values.password,values.name,values.lastname,values.country,values.cover], function(err, results) {
               callback(err, results);
             });
         }catch(err){
@@ -27,7 +27,7 @@ module.exports = {
 
       delete: function(idusers,callback ) {
         const q = "DELETE FROM users WHERE idusers = ?";
-        conn.query(q,idusers, function(err, results, fields) {
+        conn.query(q,idusers, function(err, results) {
           callback(err, results);
         });
       },
