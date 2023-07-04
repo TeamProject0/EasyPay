@@ -15,8 +15,8 @@ module.exports = {
                 folder: 'paypal',
               })
               console.log(uploadResult.secure_url)
-            const q = "INSERT INTO users (username, `email`, password, name, lastname, country, cover,) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            conn.query(q,[values.username,values.email,values.password,values.name,values.lastname,values.country,values.cover], function(err, results) {
+            const q = `INSERT INTO users (username, email, password, name, lastname, country, cover,) VALUES ("${values.username}", "${values.email}", "${values.password}", "${values.name}", "${values.lastname}", "${values.country}", "${uploadResult.secure_url}")`;
+            conn.query(q,function(err, results) {
               callback(err, results);
             });
         }catch(err){
