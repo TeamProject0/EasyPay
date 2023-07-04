@@ -1,6 +1,7 @@
 const conn = require("../index")
 const cloudinary = require("../cloudConfig.js")
 
+
 module.exports = {
     getAll: function (callback) {
         const q = 'SELECT * FROM users'
@@ -37,6 +38,8 @@ module.exports = {
         conn.query(q,[idusers,username,email,password,name,lastname,country], function(err, results, fields) {
           callback(err, results);
         });
-      }
+      },
+
+
 
 }
