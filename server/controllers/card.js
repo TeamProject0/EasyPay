@@ -13,38 +13,31 @@ module.exports = {
       } else {
         res.json(results);
       }
-    }, req.body);
+    }, req.body,req.params.iduser);
   },
-  deleteUser: function (req, res) {
+  deleteCard: function (req, res) {
     cards.delete(
       req.params.idcards,
       function (err, results) {
         if (err) {
           res.status(500).send(err);
         } else {
-          res.sendStatus(204);
+          res.status(202).send(results);
         }
-      },
-      req.params
-    );
+      });
   },
 
-  updateCard: function (req, res) {
+ addBalance: function (req, res) {
     cards.update(
-      req.body.cardnumber,
-      req.body.cvv,
-      req.body.balance,
-      req.body.expiry,
-      req.body.brand,
-      req.params.idcard,
+      req.body,
+      req.params.idcards,
       function (err, results) {
         if (err) {
           res.status(500).send(err);
         } else {
-          res.sendStatus(200);
+          res.status(200).send(results);
         }
       },
-      req.params
     );
   },
 };
