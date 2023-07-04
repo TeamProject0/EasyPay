@@ -17,7 +17,7 @@ module.exports = {
               })
               console.log(uploadResult.secure_url)
             const q = "INSERT INTO users (username, `email`, password, name, lastname, country, cover,) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            conn.query(q,[values.username,values.email,values.password,values.name,values.lastname,values.country,values.cover], function(err, results) {
+            conn.query(q,[values.username,values.email,values.password,values.name,values.lastname,values.country,values.cover], function(err, results,fields) {
               callback(err, results);
             });
         }catch(err){
