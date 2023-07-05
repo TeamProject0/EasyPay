@@ -9,7 +9,7 @@ module.exports = {
   addUser: function (req, res) {
     users.add(function (err, results) {
       if (err) {
-        res.status(500).send(err);
+        res.status(500).json(err);
       } else {
         res.json(results);
       }
