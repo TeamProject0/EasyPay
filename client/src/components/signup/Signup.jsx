@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios'
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
-  const [user,setUser]=useState({
+  const [user, setUser] = useState({
     name: '',
-      lastname: '',
-      username:'',
-      email: '',
-      password: '',
-      country:'',
-      cover:null
-
-  })
+    lastname: '',
+    username: '',
+    email: '',
+    password: '',
+    country: '',
+    cover: null,
+  });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -26,7 +25,7 @@ const Signup = () => {
     const form = new FormData();
     form.append('file', file);
     form.append('upload_preset', 'paypalscard');
-  
+
     try {
       const response = await axios.post(
         'https://api.cloudinary.com/v1_1/dgcdmrj7x/image/upload',
@@ -34,31 +33,29 @@ const Signup = () => {
         {
           headers: {
             'Content-Type': 'multipart/form-data',
-            'Authorization': process.env.CLOUD_KEY
-          }
+          },
         }
       );
-  
-      const imageUrl = response.data.secure_url;
+
+      const imageUrl = await response.data.secure_url;
       setUser((prev) => ({ ...prev, cover: imageUrl }));
+      console.log(imageUrl);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const handleClick = async (e) => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:3000/users/add', user);
-      navigate('/login')
+      navigate('/login');
     } catch (err) {
       console.log(err);
-      console.log(err.response); 
+      console.log(err.response);
       console.log(err.message);
     }
-  }
-
-
+  };
 
   return (
     <section className="text-center">
@@ -95,11 +92,11 @@ const Signup = () => {
                   <div className="col-md-6 mb-4">
                     <div className="form-outline">
                       <input
-                      onChange={handleChange}
+                        onChange={handleChange}
                         type="text"
                         className="form-control"
                         placeholder="Name"
-                        name='name'
+                        name="name"
                       />
                     </div>
                   </div>
@@ -108,12 +105,11 @@ const Signup = () => {
                   <div className="col-md-6 mb-4">
                     <div className="form-outline">
                       <input
-                      onChange={handleChange}
+                        onChange={handleChange}
                         type="text"
                         className="form-control"
                         placeholder="Last Name"
-                        name='lastname'
-
+                        name="lastname"
                       />
                     </div>
                   </div>
@@ -126,58 +122,57 @@ const Signup = () => {
                     type="text"
                     className="form-control"
                     placeholder="User Name"
-                    name='username'
+                    name="username"
                   />
                 </div>
                 {/* email input */}
 
                 <div className="form-outline mb-4">
                   <input
-                  onChange={handleChange}
+                    onChange={handleChange}
                     type="email"
                     className="form-control"
                     placeholder="Email Adress"
-                    name='email'
+                    name="email"
                   />
                 </div>
 
                 {/* Password input */}
                 <div className="form-outline mb-4">
                   <input
-                  onChange={handleChange}
+                    onChange={handleChange}
                     type="password"
                     className="form-control"
                     placeholder="Password"
-                    name='password'
+                    name="password"
                   />
                 </div>
                 {/* country input */}
 
                 <div className="form-outline mb-4">
                   <input
-                  onChange={handleChange}
+                    onChange={handleChange}
                     type="text"
                     className="form-control"
                     placeholder="Country"
-                    name='country'
+                    name="country"
                   />
                 </div>
                 {/* cover input */}
 
                 <div className="form-outline mb-4">
                   <input
-                  onChange={handleImageUpload}
+                    onChange={handleImageUpload}
                     type="file"
                     className="form-control"
                     placeholder="Cover"
-                    name='cover'
+                    name="cover"
                   />
                 </div>
 
                 {/* Submit button */}
                 <button
-                onClick={handleClick} 
-                  
+                  onClick={handleClick}
                   className="btn btn-primary btn-block mb-4"
                 >
                   Sign up
