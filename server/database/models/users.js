@@ -1,5 +1,6 @@
 const conn = require('../index');
 
+
 module.exports = {
   getAll: function (callback) {
     const q = 'SELECT * FROM users';
@@ -39,8 +40,8 @@ module.exports = {
       callback(err, results);
     });
   },
-
-  update: function (
+ 
+      update: function (
     idusers,
     username,
     email,
@@ -61,3 +62,8 @@ module.exports = {
     );
   },
 };
+
+
+
+}
+
