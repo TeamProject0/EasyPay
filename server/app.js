@@ -6,10 +6,12 @@ app.use(cors())
 
 const usersRoute = require("./routes/users.routes")
 const cardRoute = require("./routes/card.routes")
+const historyRoute = require("./routes/history")
 
 
 app.use("/users",usersRoute)
 app.use("/cards",cardRoute)
+app.use("/history", historyRoute)
 
 
 module.exports = app
