@@ -1,6 +1,8 @@
 const conn = require('../index');
 const bcrypt = require("bcrypt")
 const jwt=require("jsonwebtoken")
+require('dotenv').config()
+   const {ACCESS_TOKEN_SECRET,REFRESH_TOKEN_SECRET}=require("./jwtConfig")
 module.exports = {
   //* get all users from db
   getAll: function (callback) {
@@ -79,8 +81,8 @@ module.exports = {
             const token=jwt.sign({
               username:result[0].username,
               password:result[0].password
-            },process.env.ACCESS_TOKEN_SECRET)
-            callback(null, token)
+            },ACCESS_TOKEN_SECRET)
+            cb(null, token)
           }else{
             cb("Incorrect password",null)
           }
@@ -89,6 +91,8 @@ module.exports = {
     })
   }
 };
+
+console.log("key",ACCESS_TOKEN_SECRET);
 
 
 
