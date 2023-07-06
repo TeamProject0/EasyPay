@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `paypal`.`users` (
   `idusers` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(300) NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
   `country` VARCHAR(45) NOT NULL,
