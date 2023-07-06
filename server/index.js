@@ -1,4 +1,4 @@
-const app = require("./app")
+const app = require("../server/app")
 const db = require("./database/index")
 const port = 3000
 
