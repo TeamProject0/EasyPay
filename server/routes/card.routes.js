@@ -1,8 +1,6 @@
 const express = require("express")
 const router = express.Router()
 
-
-
 const { getAllCard, addCard,deleteCard, addBalance, } = require("../controllers/card");
 
 

@@ -1,5 +1,6 @@
 package-lock.json
 node_modules
+server/database/models/jwtConfig.js
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
