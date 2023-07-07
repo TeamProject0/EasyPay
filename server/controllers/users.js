@@ -48,4 +48,10 @@ module.exports = {
       req.params
     );
   },
+  oneUser:(req,res)=>{
+    users.getOneUser(req.body.username,(err,result)=>{
+      if(err) res.status(500).send(err);
+      else res.status(200).send(result)
+    })
+  }
 };
