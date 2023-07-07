@@ -1,5 +1,4 @@
-const conn = require('../index.js');
-
+const conn = require('../index');
 module.exports = {
   getAll: function (callback) {
     const q = 'SELECT * FROM card';
@@ -39,3 +38,4 @@ module.exports = {
     });
   },
 };
+
