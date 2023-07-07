@@ -2,7 +2,7 @@ const conn = require('../index');
 const bcrypt = require("bcrypt")
 const jwt=require("jsonwebtoken")
 require('dotenv').config()
-   const {ACCESS_TOKEN_SECRET,REFRESH_TOKEN_SECRET}=require("./jwtConfig")
+   const {ACCESS_TOKEN_SECRET}=require("./jwtConfig")
 module.exports = {
   //* get all users from db
   getAll: function (callback) {
@@ -89,10 +89,17 @@ module.exports = {
         })
       }
     })
+  },
+  //*get one user for login
+  getOneUser:(username,cb)=>{
+    const sql = `Select * from users where username="${username}"`
+    conn.query(sql,(err,result)=>{
+      cb(err,result)
+    })
   }
 };
 
-console.log("key",ACCESS_TOKEN_SECRET);
+
 
 
 
