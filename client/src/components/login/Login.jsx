@@ -91,7 +91,7 @@ const Login = () => {
                 <div className="text-center">
                   <p>
                     Don't have an account ?{' '}
-                    <Link to="/signup">Sign up</Link>{' '}
+                    <Link to="/">Sign up</Link>{' '}
                   </p>
                 </div>
               </form>

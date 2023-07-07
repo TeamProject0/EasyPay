@@ -1,11 +1,17 @@
-import React from 'react';
+import React from 'react'
+import Navbar from './navbar/Navbar.jsx'
+import Card from './Card.jsx'
+import CreditCard from './CreditCard.jsx'
 
 const Home = () => {
-    return (
-        <div>
-            hello
-        </div>
-    );
+  return (
+    <div>
+        <Navbar/>
+        <CreditCard/>
+        <Card/>
+    </div>
+  )
 }
 
-export default Home;
+export default Home
+
