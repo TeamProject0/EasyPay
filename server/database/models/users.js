@@ -1,4 +1,6 @@
 const conn = require('../index');
+const cloudinary = require("../cloudConfig.js")
+
 
 module.exports = {
   getAll: function (callback) {
@@ -13,6 +15,10 @@ module.exports = {
     try {
       const q =
         'INSERT INTO users (username, email, password, name, lastname, country, cover) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        const uploadResult = await cloudinary.uploader.upload(values.cover, {
+          folder: "paypal" 
+        });
+        console.log(uploadResult.secure_url)
       conn.query(
         q,
         [
@@ -22,7 +28,7 @@ module.exports = {
           values.name,
           values.lastname,
           values.country,
-          values.cover,
+          uploadResult.secure_url
         ],
         function (err, results, fields) {
           callback(err, results);
