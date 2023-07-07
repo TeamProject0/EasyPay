@@ -5,9 +5,6 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
 -- Schema paypal
 -- -----------------------------------------------------
 
@@ -32,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `paypal`.`users` (
   PRIMARY KEY (`idusers`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 17
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -52,11 +50,32 @@ CREATE TABLE IF NOT EXISTS `paypal`.`card` (
   CONSTRAINT `fk_card_users`
     FOREIGN KEY (`users_idusers`)
     REFERENCES `paypal`.`users` (`idusers`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
+AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `paypal`.`history`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `paypal`.`history` (
+  `idhistory` INT NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR(45) NOT NULL,
+  `date` VARCHAR(45) NOT NULL,
+  `receive` VARCHAR(45) NULL,
+  `amount` VARCHAR(45) NOT NULL,
+  `card_idcard` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`idhistory`),
+  INDEX `fk_history_card1_idx` (`card_idcard` ASC) VISIBLE,
+  CONSTRAINT `fk_history_card1`
+    FOREIGN KEY (`card_idcard`)
+    REFERENCES `paypal`.`card` (`idcard`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
