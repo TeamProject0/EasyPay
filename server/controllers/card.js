@@ -4,7 +4,7 @@ module.exports = {
     cards.getAll(function (err, results) {
       if (err) res.status(500).send(err);
       else res.json(results);
-    });
+    },req.params.iduser);
   },
   addCard: function (req, res) {
     cards.add(

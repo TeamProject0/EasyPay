@@ -227,27 +227,38 @@
 }
 
 
-.inp{
-  max-width : 18rem
+.inp {
+  max-width: 18rem
 }
-.dv{
+
+.dv {
   display: flex;
   flex-wrap: wrap-reverse;
   justify-content: space-around;
 }
-.alldv{
+
+.alldv {
   width: 500px;
   height: 400px;
 
 }
+
 .btnn{
 margin-left: 37%;
 }
+
+
+.btnn {
+  margin-left: 37%;
+}
+
+
 .al {
   display: flex;
   flex-wrap: wrap-reverse;
   justify-content: space-around;
 }
+
 
 .card {
   width: 190px;
@@ -305,3 +316,15 @@ margin-left: 37%;
   transform: translate(-50%, 50%);
   opacity: 1;
  }
+
+.unlist {
+  list-style: none;
+  float: left;
+}
+
+.listed {
+  display: inline;
+  margin: 20px;
+
+}
+
