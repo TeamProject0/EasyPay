@@ -3,7 +3,7 @@ const cloudinary = require("../cloudConfig.js")
 const bcrypt = require("bcrypt")
 const jwt=require("jsonwebtoken")
 require('dotenv').config()
-   const {ACCESS_TOKEN_SECRET}=require("./jwtConfig")
+const {ACCESS_TOKEN_SECRET}=require("./jwtConfig")
 
 module.exports = {
   //* get all users from db

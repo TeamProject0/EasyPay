@@ -1,6 +1,22 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 const CreditCard = () => {
+
+  const [cards, setCards] = useState([]);
+    useEffect(() => {
+      const fetchCard = async () => {
+        try {
+          const res = await axios.get('http://localhost:3000/cards/getAll');
+          
+            setCards(res.data)
+          
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchCard();
+    }, []);
+
   return (
     <div className="flip-card al">
       <div className="flip-card-inner">
