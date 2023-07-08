@@ -17,6 +17,7 @@ const CreditCard = ({ data }) => {
     };
     fetchCard();
   }, []);
+
   console.log("cards", cards);
 
   return (
@@ -75,16 +76,16 @@ const CreditCard = ({ data }) => {
               OjU2KzAwOjAw0ssWdwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xM1QwODoxOTo1Nisw
               MDowMIXeN6gAAAAASUVORK5CYII="></image>
           </svg>
-          <p className="number">{cards[0].cardnumber}</p>
+          <p className="number">{cards[0]?.cardnumber}</p>
           <p className="valid_thru">{data[0].country}</p>
-          <p className="date_8264">{cards[0].expiry}</p>
-          <p className="name"></p>
+          <p className="date_8264">{cards[0]?.expiry}</p>
+          <p className="name">{data[0].name + " " + data[0].lastname}</p>
         </div>
         <div className="flip-card-back">
           <div className="strip"></div>
           <div className="mstrip"></div>
           <div className="sstrip">
-            <p className="code">***</p>
+            <p className="code">{cards[0].cvv}</p>
           </div>
         </div>
       </div>
