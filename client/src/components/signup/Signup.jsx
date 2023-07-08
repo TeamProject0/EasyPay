@@ -14,7 +14,6 @@ const Signup = () => {
     cover: null,
   });
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     setUser((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     console.log(user);

@@ -1,5 +1,5 @@
-import axios from 'axios';
 import React  , {useEffect} from 'react';
+import axios from 'axios';
 
 
 const Allhistory = () => {
@@ -7,7 +7,9 @@ const Allhistory = () => {
 useEffect(() => {
     fetch()
 } , [])
-    fetch = () => {
+
+
+   const  fetch = () => {
 axios.get("http://localhost:3000/history")
 .then(res => {console.log(res.data)})
 .catch(err => {console.log(err)})

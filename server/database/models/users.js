@@ -1,8 +1,9 @@
 const conn = require('../index');
+const cloudinary = require("../cloudConfig.js")
 const bcrypt = require("bcrypt")
 const jwt=require("jsonwebtoken")
 require('dotenv').config()
-  
+// const {ACCESS_TOKEN_SECRET}=require("./jwtConfig")
 module.exports = {
   //* get all users from db
   getAll: function (callback) {
@@ -18,6 +19,10 @@ module.exports = {
       const hashedPassword= await bcrypt.hash(values.password,10)
       const q =
         'INSERT INTO users (username, email, password, name, lastname, country, cover) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        const uploadResult = await cloudinary.uploader.upload(values.cover, {
+          folder: "paypal" 
+        });
+        console.log(uploadResult.secure_url)
       conn.query(
         q,
         [
@@ -27,7 +32,7 @@ module.exports = {
           values.name,
           values.lastname,
           values.country,
-          values.cover,
+          uploadResult.secure_url
         ],
         function (err, results, fields) {
           callback(err, results);
@@ -88,6 +93,13 @@ module.exports = {
           }
         })
       }
+    })
+  },
+  //*get one user for login
+  getOneUser:(username,cb)=>{
+    const sql = `Select * from users where username="${username}"`
+    conn.query(sql,(err,result)=>{
+      cb(err,result)
     })
   }
 };

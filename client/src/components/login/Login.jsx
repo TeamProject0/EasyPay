@@ -1,7 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const navigate = useNavigate();
+
+  //! get one user by username
+  const authLogin = () => {
+    axios.post("http://localhost:3000/users/authentication", { username, password })
+      .then((res) => {
+        const token = res.data; console.log("Successfully logged-in")
+        //!save set data in localStorage
+        localStorage.setItem("token", token)
+        //! getting the authenticated user by username (username unique)
+        axios.post("http://localhost:3000/users/getOneUser", { username })
+          .then((res) => {
+            navigate("/profile", { state: res.data })
+          })
+      })
+      .catch((err) => console.log(err))
+  }
   return (
     <section className="text-center">
       {/* Background image */}
@@ -32,20 +53,26 @@ const Login = () => {
               <form>
                 {/* email input */}
 
-                <div className="form-outline mb-4">
+                <div className="form-outline mb-4 " >
                   <input
-                    type="email"
+                    type="text"
                     className="form-control"
-                    placeholder="Email Adress"
+                    placeholder="Username"
+                    onChange={(e) => {
+                      setUsername(e.target.value)
+                    }}
                   />
                 </div>
 
                 {/* Password input */}
-                <div className="form-outline mb-4">
+                <div className="form-outline mb-4 ">
                   <input
                     type="password"
                     className="form-control"
                     placeholder="Password"
+                    onChange={(e) => {
+                      setPassword(e.target.value)
+                    }}
                   />
                 </div>
 
@@ -53,6 +80,12 @@ const Login = () => {
                 <button
                   type="submit"
                   className="btn btn-primary btn-block mb-4"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    authLogin()
+
+                  }
+                  }
                 >
                   Login
                 </button>
@@ -60,8 +93,8 @@ const Login = () => {
                 {/* Register buttons */}
                 <div className="text-center">
                   <p>
-                  Don't have an account ?{' '}
-                    <Link to="/signup">Sign up</Link>{' '}
+                    Don't have an account ?{' '}
+                    <Link to="/">Sign up</Link>{' '}
                   </p>
                 </div>
               </form>
@@ -69,7 +102,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
