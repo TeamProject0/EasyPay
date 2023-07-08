@@ -2,13 +2,12 @@ import React from 'react';
 
 const Card = () => {
   return (
-    <div className="card">
-      <div className="card-body">
-        <h5 className="card-title">PayPal</h5>
-        <h6 className="card-subtitle mb-2 text-muted">Balance</h6>
-        <p className="card-text">Amount: 1000 $ </p>
-        <a href="#" className="btn btn-primary">Link</a>
-        <a href="#" className="btn btn-secondary">Another Link</a>
+    <div class="card2 ">
+      <div class="card2-details">
+        <p class="text2-title">EasyPay Balance</p>
+        <p class="text2-body">$500 USD</p>
+        <p className='text2-title'>Available</p>
+        <button class="card2-button btn btn-primary">Transfer Money</button>
       </div>
     </div>
   );

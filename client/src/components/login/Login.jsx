@@ -1,23 +1,25 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, createSearchParams, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
-  const [logged, setLogged] = useState([])
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate();
+
   //! get one user by username
   const authLogin = () => {
     axios.post("http://localhost:3000/users/authentication", { username, password })
       .then((res) => {
-        const token = res.data.token; console.log("Successfully logged-in")
+        const token = res.data; console.log("Successfully logged-in")
         //!save set data in localStorage
         localStorage.setItem("token", token)
         //! getting the authenticated user by username (username unique)
         axios.post("http://localhost:3000/users/getOneUser", { username })
-          .then((res) => { setLogged(res.data); navigate("/signUp") })
+          .then((res) => {
+            navigate("/profile", { state: res.data })
+          })
       })
       .catch((err) => console.log(err))
   }
@@ -81,6 +83,7 @@ const Login = () => {
                   onClick={(e) => {
                     e.preventDefault()
                     authLogin()
+
                   }
                   }
                 >

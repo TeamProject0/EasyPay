@@ -1,11 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ data }) => {
+
   return (
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
- 
-
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav mr-auto ">
     <li className="nav-item dropdown ">
@@ -26,8 +25,6 @@ loading="lazy"
 
         </div>
       </li>
-      
-     
     </ul>
     <form className="form-inline my-2 my-lg-0">
       <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
@@ -42,11 +39,3 @@ export default Navbar
 
 
 
-
-// <img
-// src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-// className="rounded-circle "
-// height="70"
-// alt="Black and White Portrait of a Man"
-// loading="lazy"
-// />

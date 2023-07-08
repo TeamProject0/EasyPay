@@ -32,6 +32,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -39,45 +40,47 @@
 
 
 .card2 {
-  width: 190px;
-  height: 254px;
+  width: 500px;
+  height: 290px;
   border-radius: 8px;
   background: #f5f5f5;
-  position: relative;
   padding: 1.8rem;
   border: 2px solid #c3c6ce;
   transition: 0.5s ease-out;
   overflow: visible;
- }
- 
- .card2-details {
-  color: black;
+}
+
+.card2-details {
+  color: rgba(0, 0, 0, 0.796);
   height: 100%;
-  gap: .5em;
-  display: grid;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+.text2-body {
   place-content: center;
- }
- 
- 
- 
- .text2-body {
-  font-weight: bold;
+  font-size: 3em;
+}
 
-  font-size: 1.5em;
 
- }
- 
-
- .text2-title {
+.text2-title {
+  text-align: left;
   font-size: 1.5em;
   color: rgb(134, 134, 134);
- }
- 
- 
- .card2:hover {
+}
+
+
+.card2:hover {
   border-color: #008bf8;
   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
- }
+}
+
+.card2-button {
+  border-radius: 20px;
+}
+
 /****creditCArd****/
 .flip-card {
   background-color: transparent;
@@ -151,13 +154,11 @@
   width: 15em;
   height: 1.5em;
   top: 2.4em;
-  background: repeating-linear-gradient(
-    45deg,
-    #303030,
-    #303030 10px,
-    #202020 10px,
-    #202020 20px
-  );
+  background: repeating-linear-gradient(45deg,
+      #303030,
+      #303030 10px,
+      #202020 10px,
+      #202020 20px);
 }
 
 .mstrip {
@@ -200,8 +201,9 @@
   transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
-  box-shadow: 0 8px 14px 0 rgba(0,0,0,0.2);
+.flip-card-front,
+.flip-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -224,6 +226,7 @@
   transform: rotateY(180deg);
 }
 
+
 .inp{
   max-width : 18rem
 }
@@ -239,4 +242,9 @@
 }
 .btnn{
 margin-left: 37%;
+
+.al {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-around;
 }
