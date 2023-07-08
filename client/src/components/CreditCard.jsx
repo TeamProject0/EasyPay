@@ -1,6 +1,22 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 const CreditCard = () => {
+
+  const [cards, setCards] = useState([]);
+    useEffect(() => {
+      const fetchCard = async () => {
+        try {
+          const res = await axios.get('http://localhost:3000/cards/getAll');
+          
+            setCards(res.data)
+          
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchCard();
+    }, []);
+
   return (
     <div className="flip-card">
     <div className="flip-card-inner">
@@ -57,18 +73,29 @@ const CreditCard = () => {
               OjU2KzAwOjAw0ssWdwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xM1QwODoxOTo1Nisw
               MDowMIXeN6gAAAAASUVORK5CYII="></image>
             </svg>
-            <p className="number">9759 2484 5269 6576</p>
-            <p className="valid_thru">VALID THRU</p>
-            <p className="date_8264">1 2 / 2 4</p>
-            <p className="name">BRUCE WAYNE</p>
+            {cards.map((elem)=>{
+              return (
+<div key={elem}>
+                <p className="number">{elem.cardnumber}</p>
+                <p className="valid_thru">VALID THRU</p>
+                <p className="date_8264">{elem.expiry}</p>
+                <p className="name">BRUCE WAYNE</p>
+                </div>
+            )
+          })}
         </div>
-        <div className="flip-card-back">
+        {cards.map((elem,index)=>{
+          return(
+
+        <div  className="flip-card-back">
             <div className="strip"></div>
             <div className="mstrip"></div>
             <div className="sstrip">
-              <p className="code">***</p>
+              <p className="code">{elem.cvv}</p>
             </div>
         </div>
+          )
+        })}
     </div>
 </div>
   )

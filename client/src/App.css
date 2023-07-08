@@ -223,3 +223,20 @@
   background-color: #171717;
   transform: rotateY(180deg);
 }
+
+.inp{
+  max-width : 18rem
+}
+.dv{
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-around;
+}
+.alldv{
+  width: 500px;
+  height: 400px;
+
+}
+.btnn{
+margin-left: 37%;
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -18,10 +19,10 @@ loading="lazy"
 />
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a className="dropdown-item" href="#">Profile</a>
-          <a className="dropdown-item" href="#">Activity</a>
-          <a className="dropdown-item" href="#">Transaction</a>
-          <a className="dropdown-item" href="#">Log out</a>
+        <Link to="/profile"><p className="dropdown-item" >Profile</p></Link>  
+          <p className="dropdown-item" >Activity</p>
+          <p className="dropdown-item" >Transaction</p>
+          <p className="dropdown-item" >Log out</p>
 
         </div>
       </li>
