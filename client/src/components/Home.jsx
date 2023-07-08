@@ -8,14 +8,13 @@ const Home = () => {
   const location = useLocation()
   const data = location.state
 
-
   console.log("data in home", data);
   return (
     <div>
       <Navbar data={data} />
       <div className='al'>
         <Card />
-        <CreditCard />
+        <CreditCard iduser={data[0].idusers} data={data} />
       </div>
     </div>
   )

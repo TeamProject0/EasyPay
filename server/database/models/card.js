@@ -1,7 +1,7 @@
 const conn = require('../index');
 module.exports = {
-  getAll: function (callback) {
-    const q = 'SELECT * FROM card';
+  getAll: function (callback,idUser) {
+    const q = `SELECT * FROM card where users_idusers=${idUser}`;
     conn.query(q, function (error, results) {
       callback(error, results);
     });
