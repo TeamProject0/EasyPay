@@ -10,7 +10,7 @@ const Navbar = ({ data }) => {
     <li className="nav-item dropdown ">
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        <img
-src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+src='aa'
 className="rounded-circle "
 height="50"
 alt="Black and White Portrait of a Man"
@@ -18,7 +18,7 @@ loading="lazy"
 />
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-        <Link to="/profile"><p className="dropdown-item" >Profile</p></Link>  
+        <Link to="/"><p className="dropdown-item" >Profile</p></Link>  
           <p className="dropdown-item" >Activity</p>
           <p className="dropdown-item" >Transaction</p>
           <p className="dropdown-item" >Log out</p>

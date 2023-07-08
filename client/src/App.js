@@ -22,9 +22,7 @@ function App() {
     <Route path='/history'  element={<AllHistory />}/>
      <Route path='/signup' element={<Signup/>}/>
     <Route path='/history'  element={<AllHistory/>}/>
-     <Route path='/si' element={<Signup/>}/>
      <Route path='/login' element={<Login/>}/>
-     <Route path='/profile' element={<Home/>}/>
      <Route path='/add' element={<AddCard/>}/>
 
     </Routes>
