@@ -1,40 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 const CreditCard = ({ data }) => {
-  console.log("data in creditCard", data);
-
   const [cards, setCards] = useState([]);
-
-  
-    useEffect(() => {
-      const fetchCard = async () => {
-        try {
-          const res = await axios.get('http://localhost:3000/cards/getAll');
-          
-            setCards(res.data)
-          
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      fetchCard();
-    }, []);
-
   useEffect(() => {
     console.log("a");
     const fetchCard = () => {
-      console.log("a");
-
       axios.get(`http://localhost:3000/cards/getCards/${data[0].idusers}`)
         .then((res) => { setCards(res.data); console.log("res.data", res.data) })
         .catch((err) => { console.log(err) })
-
-
     };
     fetchCard();
   }, []);
 
-  console.log("cards", cards);
 
 
   return (
@@ -102,7 +79,7 @@ const CreditCard = ({ data }) => {
           <div className="strip"></div>
           <div className="mstrip"></div>
           <div className="sstrip">
-            <p className="code">{cards[0].cvv}</p>
+            <p className="code">{cards[0]?.cvv}</p>
           </div>
         </div>
       </div>
