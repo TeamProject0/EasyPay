@@ -248,16 +248,20 @@ margin-left: 37%;
 }
 
 
+
 .btnn {
   margin-left: 37%;
 }
+
 
 
 .al {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
 }
+
 
 
 .card {

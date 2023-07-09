@@ -7,6 +7,7 @@ module.exports = {
     });
   },
 
+
   add: function (callback, values, iduser) {
     const q =
       'INSERT INTO card (cardnumber,cvv,balance,expiry,brand,users_idusers) VALUES (?,?,?,?,?,?)';

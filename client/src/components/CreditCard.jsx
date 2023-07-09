@@ -13,7 +13,6 @@ const CreditCard = ({ data }) => {
   }, []);
 
 
-
   return (
     <div className="flip-card al">
       <div className="flip-card-inner">
