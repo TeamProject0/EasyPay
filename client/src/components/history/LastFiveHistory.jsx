@@ -1,10 +1,7 @@
 import axios from 'axios';
 import React  , {useEffect, useState} from 'react';
-
-
 const LastFiveHistory = () => {
-    const [data , setData] = useState([])
-    console.log(data)
+const [data , setData] = useState([])
     useEffect(() => {
         
         fetch()
@@ -41,7 +38,7 @@ const LastFiveHistory = () => {
                   <tr key={i}>
                     <td>{el.date}</td>
                     <td>{el.amount}</td>
-                    <td>{el.reciver}</td>
+                    <td>{el.receive}</td>
                     <td>{el.type}</td>
                   </tr>
                 ))}

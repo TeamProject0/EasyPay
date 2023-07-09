@@ -1,28 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+
 const CreditCard = ({data}) => {
 
-  console.log("data in creditCard", data);
-
   const [cards, setCards] = useState([]);
-
-  
-  
-
   useEffect(() => {
+    console.log("a");
     const fetchCard = () => {
-    
-
       axios.get(`http://localhost:3000/cards/getCards/${data[0].idusers}`)
         .then((res) => { setCards(res.data); console.log("res.data", res.data) })
         .catch((err) => { console.log(err) })
-
-
     };
     fetchCard();
-  },);
+  }, []);
 
-  console.log("cards", cards);
 
   return (
     <div className="flip-card al">
@@ -90,6 +81,7 @@ const CreditCard = ({data}) => {
           <div className="mstrip"></div>
           <div className="sstrip">
           <p className="code">{cards[0]?.cvv}</p>
+
           </div>
         </div>
       </div>
