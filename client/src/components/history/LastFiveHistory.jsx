@@ -42,7 +42,7 @@ const LastFiveHistory = () => {
                   <tr key={i}>
                     <td>{el.date}</td>
                     <td>{el.amount}</td>
-                    <td>{el.reciver}</td>
+                    <td>{el.receive}</td>
                     <td>{el.type}</td>
                   </tr>
                 ))}

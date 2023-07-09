@@ -10,7 +10,8 @@ function getAllHistory(req, res) {
   }
 
   function addHistory(req, res) {
-    history.addHistory(req.body.date, req.body.type, req.body.reciver, req.body.card_idcard, req.body.amount , function (err, results) {
+
+    history.addHistory(req.body.date, req.body.type, req.body.receive, req.body.card_idcard, req.body.amount , function (err, results) {
       if (err) res.status(500).send(err);
       else res.json(results);
     });
@@ -21,7 +22,12 @@ function getAllHistory(req, res) {
       else res.json(results);
     });
   }
+function getByUserId(req,res){
+  history.getHistoryByUserId( req.params.card_idcard,function(err , results) {
+    if (err) res.status(500).send(err);
+    else res.json(results);
+  });
+}
 
 
-
-  module.exports = { getAllHistory , addHistory , deleteAll};
+  module.exports = { getAllHistory , addHistory , deleteAll , getByUserId};
