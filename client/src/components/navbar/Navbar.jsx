@@ -18,7 +18,7 @@ const Navbar = ({ data }) => {
             >
               <img
                 src={data[0].cover}
-                className="rounded-circle"
+                className="rounded-circle" 
                 height="50"
                 alt="Black and White Portrait of a Man"
                 loading="lazy"
