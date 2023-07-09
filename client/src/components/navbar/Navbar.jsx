@@ -1,7 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const Navbar = ({ data }) => {
+  const navigate = useNavigate();
+  const logout = (res) => {
+    const token = res.data; console.log("log out succesfully")
+
+    localStorage.removeItem('token',token);
+    navigate('/login');
+  };
 
   return (
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -10,7 +19,7 @@ const Navbar = ({ data }) => {
     <li className="nav-item dropdown ">
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        <img
-src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+src={data[0].cover}
 className="rounded-circle "
 height="50"
 alt="Black and White Portrait of a Man"
@@ -19,16 +28,15 @@ loading="lazy"
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
         <Link to="/profile"><p className="dropdown-item" >Profile</p></Link>  
-          <p className="dropdown-item" >Activity</p>
-          <p className="dropdown-item" >Transaction</p>
-          <p className="dropdown-item" >Log out</p>
+         
+          <p className="dropdown-item" onClick={logout} >Log out</p>
 
         </div>
       </li>
     </ul>
     <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <button className=" btn btn-dark my-2 my-sm-0" type="submit">Activity</button>
+      <button className="btn btn-dark my-2 my-sm-0" type="submit">Transaction</button>
     </form>
   </div>
 </nav>

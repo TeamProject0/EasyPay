@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Navbar from './navbar/Navbar.jsx'
 import Card from './Card.jsx'
 import CreditCard from './CreditCard.jsx'
 import { useLocation } from 'react-router-dom'
-
+import AddCard from './AddCard.jsx'
+import Allhistory from './history/AllHistory.jsx'
 const Home = () => {
   const location = useLocation()
   const data = location.state
@@ -15,7 +16,9 @@ const Home = () => {
       <Navbar data={data} />
       <div className='al'>
         <Card />
-        <CreditCard />
+        <CreditCard iduser={data[0].iduser} data={data} />
+        <AddCard/>
+        <Allhistory/>
       </div>
     </div>
   )

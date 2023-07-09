@@ -9,9 +9,9 @@ function getAll(callback) {
   }
 
 
-  function addHistory (date, type, reciver, card_idcard, users_idusers, callback){
+  function addHistory (type, date, receive,amount, card_idcard, callback){
    
-    conn.query("INSERT INTO history (date, type, reciver, card_idcard, users_idusers) VALUES (?, ?, ?, ?, ?)" , [date, type, reciver, card_idcard, users_idusers],function(error , result){
+    conn.query("INSERT INTO history (type, date, receive,amount,card_idcard) VALUES (?, ?, ?, ?, ?)" , [type, date, receive,amount, card_idcard],function(error , result){
         callback(error , result)
     })
 

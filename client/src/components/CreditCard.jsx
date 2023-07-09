@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-const CreditCard = () => {
+const CreditCard = ({data}) => {
+
+  console.log("data in creditCard", data);
 
   const [cards, setCards] = useState([]);
-    useEffect(() => {
-      const fetchCard = async () => {
-        try {
-          const res = await axios.get('http://localhost:3000/cards/getAll');
-          
-            setCards(res.data)
-          
-        } catch (err) {
-          console.log(err);
-        }
-      };
-      fetchCard();
-    }, []);
+
+  
+  
+
+  useEffect(() => {
+    const fetchCard = () => {
+    
+
+      axios.get(`http://localhost:3000/cards/getCards/${data[0].idusers}`)
+        .then((res) => { setCards(res.data); console.log("res.data", res.data) })
+        .catch((err) => { console.log(err) })
+
+
+    };
+    fetchCard();
+  },);
+
+  console.log("cards", cards);
 
   return (
     <div className="flip-card al">
@@ -73,16 +80,16 @@ const CreditCard = () => {
               OjU2KzAwOjAw0ssWdwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xM1QwODoxOTo1Nisw
               MDowMIXeN6gAAAAASUVORK5CYII="></image>
           </svg>
-          <p className="number">9759 2484 5269 6576</p>
-          <p className="valid_thru">VALID THRU</p>
-          <p className="date_8264">1 2 / 2 4</p>
-          <p className="name">BRUCE WAYNE</p>
+          <p className="number">{cards[0]?.cardnumber}</p>
+          <p className="valid_thru">{data[0].country}</p>
+          <p className="date_8264">{cards[0]?.expiry}</p>
+          <p className="name">{data[0].name + " " + data[0].lastname}</p>
         </div>
         <div className="flip-card-back">
           <div className="strip"></div>
           <div className="mstrip"></div>
           <div className="sstrip">
-            <p className="code">***</p>
+          <p className="code">{cards[0]?.cvv}</p>
           </div>
         </div>
       </div>
