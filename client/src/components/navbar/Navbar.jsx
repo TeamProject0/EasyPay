@@ -17,20 +17,24 @@ const Navbar = ({ data }) => {
               aria-expanded="false"
             >
               <img
-                src="aa"
-                className="rounded-circle"
+                src={data[0].cover}
+                className="rounded-circle" 
                 height="50"
                 alt="Black and White Portrait of a Man"
                 loading="lazy"
               />
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <Link to="/profile"><p className="dropdown-item" >Profile</p></Link>
+              <p className="dropdown-item" >Log out</p>
+
+
               <Link to="/">
                 <p className="dropdown-item">Profile</p>
               </Link>
-              <p className="dropdown-item">Activity</p>
-              <p className="dropdown-item">Transaction</p>
               <p className="dropdown-item">Log out</p>
+
             </div>
           </li>
         </ul>
