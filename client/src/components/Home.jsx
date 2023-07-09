@@ -14,7 +14,7 @@ const Home = () => {
       <Navbar data={data} />
       <div className='al'>
         <Card />
-        <CreditCard iduser={data[0].idusers} data={data} />
+        <CreditCard iduser={data[0  ]} data={data} />
       </div>
     </div>
   )

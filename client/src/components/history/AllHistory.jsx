@@ -40,7 +40,7 @@ axios.get("http://localhost:3000/history")
               <tr key={i}>
                 <td>{el.date}</td>
                 <td>{el.amount}</td>
-                <td>{el.reciver}</td>
+                <td>{el.receive}</td>
                 <td>{el.type}</td>
               </tr>
             ))}
