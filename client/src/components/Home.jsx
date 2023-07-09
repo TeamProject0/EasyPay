@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React  from 'react'
 import Navbar from './navbar/Navbar.jsx'
 import Card from './Card.jsx'
 import CreditCard from './CreditCard.jsx'
