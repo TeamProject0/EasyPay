@@ -18,10 +18,19 @@ function getAll(callback) {
   }
   function deleteAll (callback){
    
-    conn.query("DELETE FROM history ",function(error , result){
+    conn.query("DELETE FROM history ", users_idusers ,function(error , result){
         callback(error , result)
     })
 
   }
 
-  module.exports = {getAll , addHistory , deleteAll}
+  function getHistoryByUserId( users_idusers ,callback){
+   
+    conn.query("SELECT *  FROM history WHERE users_idusers= ? ", [users_idusers] , function(error , result){
+        callback(error , result)
+    })
+
+  }
+
+
+  module.exports = {getAll , addHistory , deleteAll , getHistoryByUserId}

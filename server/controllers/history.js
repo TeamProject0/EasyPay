@@ -21,7 +21,12 @@ function getAllHistory(req, res) {
       else res.json(results);
     });
   }
+function getByUserId(req,res){
+  history.getHistoryByUserId( req.params.users_idusers,function(err , results) {
+    if (err) res.status(500).send(err);
+    else res.json(results);
+  });
+}
 
 
-
-  module.exports = { getAllHistory , addHistory , deleteAll};
+  module.exports = { getAllHistory , addHistory , deleteAll , getByUserId};
