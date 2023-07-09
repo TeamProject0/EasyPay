@@ -10,20 +10,18 @@ function getAll(callback) {
 
 
 
-  function addHistory (date, type, receive, card_idcard,amount , callback){
+  function addHistory (type, date, receive,amount, card_idcard, callback){
    
-    conn.query("INSERT INTO history (date, type, receive, card_idcard,amount ) VALUES (?, ?, ?, ?, ?)" , [date, type, receive, card_idcard, amount ],function(error , result){
-
-        callback(error , result)
+    conn.query("INSERT INTO history (type, date, receive,amount,card_idcard) VALUES (?, ?, ?, ?, ?)" , [type, date, receive,amount, card_idcard],function(error , result){
+      callback(error , result)
     })
 
   }
-  function deleteAll (callback){
-   
+
+  function deleteAll (callback){   
     conn.query("DELETE FROM history ",card_idcard,function(error , result){
         callback(error , result)
     })
-
   }
 
   function getHistoryByUserId( card_idcard ,callback){

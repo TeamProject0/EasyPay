@@ -1,8 +1,9 @@
+
 import React  , {useEffect, useState} from 'react';
 import axios from 'axios';
 import '../../App.css'
 const Allhistory = () => {
- const [data , setData] = useState([])
+const [data , setData] = useState([])
 console.log(data)
 useEffect(() => {
     
@@ -20,6 +21,9 @@ axios.get("http://localhost:3000/history")
 })
 .catch(err => {console.log(err)})
     } 
+
+
+               
 
     return (
         <div className="container">
