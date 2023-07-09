@@ -4,6 +4,22 @@ const CreditCard = ({ data }) => {
   console.log("data in creditCard", data);
 
   const [cards, setCards] = useState([]);
+
+  
+    useEffect(() => {
+      const fetchCard = async () => {
+        try {
+          const res = await axios.get('http://localhost:3000/cards/getAll');
+          
+            setCards(res.data)
+          
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchCard();
+    }, []);
+
   useEffect(() => {
     console.log("a");
     const fetchCard = () => {
@@ -19,6 +35,7 @@ const CreditCard = ({ data }) => {
   }, []);
 
   console.log("cards", cards);
+
 
   return (
     <div className="flip-card al">
