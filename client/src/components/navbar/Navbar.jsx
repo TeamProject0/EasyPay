@@ -19,8 +19,6 @@ const Navbar = ({ data }) => {
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
               <Link to="/profile"><p className="dropdown-item" >Profile</p></Link>
-              <p className="dropdown-item" >Activity</p>
-              <p className="dropdown-item" >Transaction</p>
               <p className="dropdown-item" >Log out</p>
 
             </div>

@@ -239,7 +239,7 @@
 
 .alldv {
   width: 500px;
-  height: 400px;
+  height: 500px;
 
 }
 
@@ -249,8 +249,8 @@
 
 .al {
   display: flex;
-  flex-wrap: wrap-reverse;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .unlist {
