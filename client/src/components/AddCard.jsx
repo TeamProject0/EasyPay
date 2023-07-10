@@ -1,10 +1,15 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import {  useNavigate } from 'react-router-dom';
+
 const generator = require('creditcard-generator')
 
-const AddCard = ({ data, refresh, setRefresh }) => {
+const AddCard = ({ data }) => {
+
+
   //! cvv generator
+  const navigate = useNavigate();
+
   const rcvv = () => {
     let str = ""
     for (var i = 0; i < 3; i++) {
@@ -27,7 +32,6 @@ const AddCard = ({ data, refresh, setRefresh }) => {
     expiry: expiring,
     brand: 'MasterCard'
   });
-  const navigate = useNavigate();
   //! handle targeted values
   const handleChange = (e) => {
     setCard((prev) => ({ ...prev, [e.target.name]: Number(e.target.value) }));
@@ -38,7 +42,8 @@ const AddCard = ({ data, refresh, setRefresh }) => {
     e.preventDefault();
     try {
       await axios.post(`http://localhost:3000/cards/add/${data[0].idusers}`, card);
-      navigate('/profile');
+      navigate("/profile", { state: data[0].username})
+
     } catch (err) {
       console.log(err);
       console.log(err.response);
@@ -46,6 +51,7 @@ const AddCard = ({ data, refresh, setRefresh }) => {
     }
   };
 
+ 
 
 
   return (

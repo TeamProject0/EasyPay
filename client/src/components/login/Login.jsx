@@ -16,10 +16,9 @@ const Login = () => {
         //!save set data in localStorage
         localStorage.setItem("token", JSON.stringify(token))
         //! getting the authenticated user by username (username unique)
-        const user = JSON.parse(localStorage.getItem("token"))
-        axios.post("http://localhost:3000/users/getOneUser", { username: user.username })
+        axios.post("http://localhost:3000/users/getOneUser", { username })
           .then((res) => {
-            navigate("/profile", { state: res.data })
+            navigate("/profile", { state: res?.data })
           })
       })
       .catch((err) => console.log(err))

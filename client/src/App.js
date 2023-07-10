@@ -8,7 +8,6 @@ import Home from './components/Home';
 
 import AllHistory from './components/history/AllHistory'
 import AddCard from './components/AddCard.jsx';
-import Navbar from './components/navbar/Navbar';
 import LastFiveHistory from './components/history/LastFiveHistory';
 
 

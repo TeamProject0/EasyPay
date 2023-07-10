@@ -1,5 +1,6 @@
-import React from "react"
-const CreditCard = ({ data, cards }) => {
+
+import React from 'react'
+const CreditCard = ({ data,cards }) => {
   return (
     <div className="flip-card al">
       <div className="flip-card-inner">
