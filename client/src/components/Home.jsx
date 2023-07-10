@@ -12,9 +12,9 @@ import axios from 'axios';
 const Home = () => {
 
   const location = useLocation()
-  const data = location.state
+  const data =  location.state
   const [cards, setCards] = useState([]);
-  const [refresh, setRefresh] = useState(false)
+  
   useEffect(() => {
     const fetchCard = () => {
       axios.get(`http://localhost:3000/cards/getCards/${data[0].idusers}`)
@@ -22,21 +22,23 @@ const Home = () => {
         .catch((err) => { console.log(err) })
     };
     fetchCard();
-  }, [refresh]);
-  const balance = cards.map((card) => {
+  }, [data]);
+  console.log("data inside home",data);
+  console.log("cards inside home",cards);
+  const balance = cards?.map((card) => {
     return card.balance
   })
   if (cards.length !== 0) {
     return (
       <div>
-        <Navbar data={data} />
+        <Navbar cover={data[0]?.cover} />
         <div className='al'>
           <Card balance={balance} />
           {cards.map((card) => {
             return <CreditCard key={card.idcard} iduser={data[0].idusers} data={data} cards={card} />
           })}
 
-          <AddCard data={data} setRefresh={setRefresh} refresh={refresh} />
+          <AddCard data={data}   />
           <LastFiveHistory />
         </div>
       </div>
@@ -44,7 +46,7 @@ const Home = () => {
   } else {
     return (
       <div>
-        <Navbar data={data} />
+        <Navbar cover={data[0]?.cover} />
         <div className='al'>
           <Card />
           <AddCard data={data} />

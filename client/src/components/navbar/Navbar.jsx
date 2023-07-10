@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const Navbar = ({ data }) => {
+const Navbar = ({ cover }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -16,7 +16,7 @@ const Navbar = ({ data }) => {
               aria-expanded="false"
             >
               <img
-                src={data[0]?.cover}
+                src={cover}
                 className="rounded-circle"
                 height="50"
                 alt="Black and White Portrait of a Man"
