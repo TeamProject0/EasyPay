@@ -1,7 +1,9 @@
+
 const users = require('../database/models/users');
 
 module.exports={
     authenticate:(req,res)=>{
+      
         users.login(req.body,(err,result)=>{
             if (err) {
                 console.error(err)

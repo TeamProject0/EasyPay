@@ -41,7 +41,7 @@
 
 .card2 {
   width: 500px;
-  height: 290px;
+  height: 340px;
   border-radius: 8px;
   background: #f5f5f5;
   padding: 1.8rem;
@@ -227,25 +227,40 @@
 }
 
 
-.inp{
-  max-width : 18rem
+.inp {
+  max-width: 18rem
 }
-.dv{
+
+.dv {
   display: flex;
   flex-wrap: wrap-reverse;
   justify-content: space-around;
 }
-.alldv{
+
+.alldv {
   width: 500px;
-  height: 400px;
+  height: 500px;
 
 }
-.btnn{
-margin-left: 37%;
+
+.btnn {
+  margin-left: 37%;
 }
 
 .al {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+}
+
+.unlist {
+  list-style: none;
+  float: left;
+}
+
+.listed {
+  display: inline;
+  margin: 20px;
+
 }

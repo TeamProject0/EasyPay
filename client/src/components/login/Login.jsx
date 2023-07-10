@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link, createSearchParams, useNavigate } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import jwt_decode from "jwt-decode"
 
 const Login = () => {
   const [username, setUsername] = useState("")
@@ -12,11 +12,12 @@ const Login = () => {
   const authLogin = () => {
     axios.post("http://localhost:3000/users/authentication", { username, password })
       .then((res) => {
-        const token = res.data; console.log("Successfully logged-in")
+        const token = jwt_decode(res.data); console.log("Successfully logged-in")
         //!save set data in localStorage
-        localStorage.setItem("token", token)
+        localStorage.setItem("token", JSON.stringify(token))
         //! getting the authenticated user by username (username unique)
-        axios.post("http://localhost:3000/users/getOneUser", { username })
+        const user = JSON.parse(localStorage.getItem("token"))
+        axios.post("http://localhost:3000/users/getOneUser", { username: user.username })
           .then((res) => {
             navigate("/profile", { state: res.data })
           })

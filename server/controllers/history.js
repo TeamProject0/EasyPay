@@ -15,7 +15,18 @@ function getAllHistory(req, res) {
       else res.json(results);
     });
   }
+  function deleteAll(req, res) {
+    history.deleteAll( function (err, results) {
+      if (err) res.status(500).send(err);
+      else res.json(results);
+    });
+  }
+function getByUserId(req,res){
+  history.getHistoryByUserId( req.params.card_idcard,function(err , results) {
+    if (err) res.status(500).send(err);
+    else res.json(results);
+  });
+}
 
 
-
-  module.exports = { getAllHistory , addHistory};
+  module.exports = { getAllHistory , addHistory , deleteAll , getByUserId};

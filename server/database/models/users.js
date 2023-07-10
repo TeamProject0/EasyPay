@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt")
 const jwt=require("jsonwebtoken")
 require('dotenv').config()
 const {ACCESS_TOKEN_SECRET}=require("./jwtConfig")
-
 module.exports = {
   //* get all users from db
   getAll: function (callback) {
@@ -87,7 +86,7 @@ module.exports = {
             const token=jwt.sign({
               username:result[0].username,
               password:result[0].password
-            },ACCESS_TOKEN_SECRET)
+            },ACCESS_TOKEN_SECRET, {expiresIn:"24h"} )
             cb(null, token)
           }else{
             cb("Incorrect password",null)
