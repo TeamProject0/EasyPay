@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 const Navbar = ({ data }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,8 +16,8 @@ const Navbar = ({ data }) => {
               aria-expanded="false"
             >
               <img
-                src={data[0].cover}
-                className="rounded-circle" 
+                src={data[0]?.cover}
+                className="rounded-circle"
                 height="50"
                 alt="Black and White Portrait of a Man"
                 loading="lazy"
@@ -27,19 +26,18 @@ const Navbar = ({ data }) => {
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
 
               <Link to="/profile"><p className="dropdown-item" >Profile</p></Link>
-              <p className="dropdown-item" >Log out</p>
-              <Link to="/">
-                <p className="dropdown-item">Profile</p>
+
+              <Link to="/login">
+                <p className="dropdown-item" >Log out</p>
               </Link>
-              <p className="dropdown-item">Log out</p>
+
 
             </div>
           </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">
           <ul className="unlist">
-            <li className="listed">Activity</li>
-            <li className="listed">Transaction</li>
+            <li className="listed"> <Link to="/history">Activity</Link></li>
           </ul>
         </form>
       </div>
