@@ -20,7 +20,7 @@ const CreditCard = ({data}) => {
 
     };
     fetchCard();
-  },);
+  }, []);
 
   console.log("cards", cards);
 
