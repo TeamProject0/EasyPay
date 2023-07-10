@@ -18,9 +18,7 @@ function App() {
   return (
 
 
-    <>
-    <Navbar/>
-    
+    <> 
     <Routes>
     <Route path='/fivehistory'  element={<LastFiveHistory/>}/>
     <Route path='/history'  element={<AllHistory />}/>
